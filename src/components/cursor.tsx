@@ -43,7 +43,7 @@ export function Cursor() {
         <path
           d="M0 0 L0 20.5 L5.4 15.4 L8.6 22.1 L11.7 20.6 L8.5 14.1 L15.5 14.1 Z"
           fill="var(--accent)"
-          stroke="#ffffff"
+          stroke="#0a0a0a"
           strokeWidth="1.5"
           strokeLinejoin="round"
         />
