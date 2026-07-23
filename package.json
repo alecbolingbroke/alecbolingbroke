@@ -24,14 +24,5 @@
     "eslint-config-next": "16.2.11",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "pnpm": {
-    "//": "Pin transitive deps whose newest patches were published too recently for Hostinger's minimumReleaseAge supply-chain policy. Bump these once the versions have aged.",
-    "overrides": {
-      "postcss": "8.5.21",
-      "flatted": "3.4.2",
-      "@eslint-community/eslint-utils": "4.9.1",
-      "baseline-browser-mapping": "2.11.0"
-    }
   }
 }

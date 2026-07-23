@@ -1,3 +1,17 @@
-ignoredBuiltDependencies:
+# pnpm settings live here (newer pnpm no longer reads the "pnpm" field in package.json).
+
+# Approve these native deps to run their install/build scripts. pnpm blocks build
+# scripts by default and Hostinger's install fails hard on any *unapproved* build
+# (ERR_PNPM_IGNORED_BUILDS) — even if listed as ignored. Both ship prebuilt binaries,
+# so approving them just links the right binary; no compiler toolchain needed.
+onlyBuiltDependencies:
   - sharp
   - unrs-resolver
+
+# Pin transitive deps whose newest patches were published too recently for
+# Hostinger's minimumReleaseAge supply-chain policy. Bump/remove once they've aged.
+overrides:
+  postcss: 8.5.21
+  flatted: 3.4.2
+  "@eslint-community/eslint-utils": 4.9.1
+  baseline-browser-mapping: 2.11.0
