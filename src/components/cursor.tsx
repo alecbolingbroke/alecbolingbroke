@@ -1,22 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { motion, useMotionValue } from "motion/react";
 
 /**
- * Big vintage arrow pointer in the hyperlink blue. Replaces the native cursor
- * (hidden via globals.css on fine-pointer devices) and tracks 1:1 with the tip
- * at the pointer position. Desktop only.
+ * Big vintage arrow pointer in the hyperlink blue, replacing the native cursor
+ * (hidden via globals.css on fine-pointer devices). The tip sits at the pointer
+ * position. On touch devices there's no mousemove, so it simply stays offscreen.
  */
 export function Cursor() {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
-  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-    setEnabled(true);
-
     const move = (e: MouseEvent) => {
       x.set(e.clientX);
       y.set(e.clientY);
@@ -24,8 +20,6 @@ export function Cursor() {
     window.addEventListener("mousemove", move, { passive: true });
     return () => window.removeEventListener("mousemove", move);
   }, [x, y]);
-
-  if (!enabled) return null;
 
   return (
     <motion.div

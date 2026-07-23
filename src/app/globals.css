@@ -5,7 +5,6 @@
 --------------------------------------------------------------------------- */
 :root {
   --bg: #ffffff;
-  --surface: #f6f6f6;
   --fg: #0a0a0a;
   --muted: #6e6e6e;
   --line: #eaeaea;
@@ -15,7 +14,6 @@
 
 @theme inline {
   --color-bg: var(--bg);
-  --color-surface: var(--surface);
   --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-line: var(--line);
