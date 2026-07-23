@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { Cursor } from "@/components/cursor";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "900"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,11 +25,11 @@ export const metadata: Metadata = {
     template: "%s · Alec Bolingbroke",
   },
   description:
-    "Independent builder working at the seam of AI, automation, and systems design. An open lab of things in progress.",
+    "Head of Applied AI. I build AI systems and automations that make busywork disappear.",
   openGraph: {
     title: "Alec Bolingbroke — Builder",
     description:
-      "Independent builder working at the seam of AI, automation, and systems design.",
+      "Head of Applied AI. I build AI systems and automations that make busywork disappear.",
     url: "https://alecbolingbroke.com",
     siteName: "Alec Bolingbroke",
     type: "website",
@@ -50,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} antialiased`}
+      className={`${inter.variable} ${geistMono.variable} antialiased`}
     >
       <body>
         <Cursor />

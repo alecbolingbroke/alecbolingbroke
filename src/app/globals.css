@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Design tokens — light "paper" theme. Change --accent for the signal color.
-   To flip dark later, swap --bg/--fg/--line/--surface here; nothing else.
+   Design tokens — pure white, near-black, one restrained accent.
 --------------------------------------------------------------------------- */
 :root {
-  --bg: #f3f2ec;       /* warm paper */
-  --surface: #eceae1;  /* slightly recessed paper */
-  --fg: #16150f;       /* near-black, warm */
-  --muted: #75736a;    /* secondary text */
-  --line: #dcdace;     /* hairlines */
-  --accent: #2b2bff;   /* electric blue — the single signal color */
-  --accent-fg: #f3f2ec;
+  --bg: #ffffff;
+  --surface: #f6f6f6;
+  --fg: #0a0a0a;
+  --muted: #6e6e6e;
+  --line: #eaeaea;
+  --accent: #2b2bff;
+  --accent-fg: #ffffff;
 }
 
 @theme inline {
@@ -23,7 +22,7 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
 
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
@@ -43,9 +42,9 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-display), Georgia, serif;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
@@ -59,18 +58,6 @@
   }
 
   a, button { -webkit-tap-highlight-color: transparent; }
-}
-
-/* Paper grain — multiply so it reads as texture on light, never intercepts input. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  pointer-events: none;
-  opacity: 0.05;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Lenis */
