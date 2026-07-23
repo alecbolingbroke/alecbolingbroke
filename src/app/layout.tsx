@@ -3,6 +3,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { Cursor } from "@/components/cursor";
+import { LoadBlur } from "@/components/load-blur";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 
@@ -45,9 +46,11 @@ export default function RootLayout({
       <body>
         <Cursor />
         <SmoothScroll>
-          <Nav />
-          <main>{children}</main>
-          <Footer />
+          <LoadBlur>
+            <Nav />
+            <main>{children}</main>
+            <Footer />
+          </LoadBlur>
         </SmoothScroll>
       </body>
     </html>

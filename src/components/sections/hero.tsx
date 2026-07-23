@@ -2,9 +2,6 @@
 
 import { useRef } from "react";
 import { animate, motion, useMotionValue } from "motion/react";
-import { SplitText } from "../reveal";
-
-const easeOut = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
   const rotateY = useMotionValue(0);
@@ -27,7 +24,7 @@ export function Hero() {
     const target = Math.round(current / 360) * 360;
     const distance = Math.abs(target - current);
     animate(rotateY, target, {
-      duration: (distance / 360) * 14, // same 14s/revolution rate as the loop
+      duration: (distance / 360) * 14,
       ease: "linear",
     });
   };
@@ -46,24 +43,16 @@ export function Hero() {
             style={{ rotateY, transformStyle: "preserve-3d" }}
             className="inline-block"
           >
-            <SplitText
-              as="h1"
-              text="Alec Bolingbroke"
-              delay={0.3}
-              className="max-w-[14ch] font-display text-[clamp(3rem,13vw,11rem)] font-bold leading-[0.9] tracking-[-0.04em]"
-            />
+            <h1 className="max-w-[14ch] font-display text-[clamp(3rem,13vw,11rem)] font-bold leading-[0.9] tracking-[-0.04em]">
+              Alec Bolingbroke
+            </h1>
           </motion.div>
         </div>
 
         {/* one quiet line */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: easeOut, delay: 1 }}
-          className="mt-8 text-base text-muted sm:text-lg"
-        >
+        <p className="mt-8 text-base text-muted sm:text-lg">
           I make AI systems that handle the busywork.
-        </motion.p>
+        </p>
       </div>
     </section>
   );
