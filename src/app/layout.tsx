@@ -21,15 +21,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://alecbolingbroke.com"),
   title: {
-    default: "Alec Bolingbroke — Builder",
+    default: "Alec Bolingbroke",
     template: "%s · Alec Bolingbroke",
   },
-  description:
-    "Head of Applied AI. I build AI systems and automations that make busywork disappear.",
+  description: "I make AI systems that handle the busywork.",
   openGraph: {
-    title: "Alec Bolingbroke — Builder",
-    description:
-      "Head of Applied AI. I build AI systems and automations that make busywork disappear.",
+    title: "Alec Bolingbroke",
+    description: "I make AI systems that handle the busywork.",
     url: "https://alecbolingbroke.com",
     siteName: "Alec Bolingbroke",
     type: "website",

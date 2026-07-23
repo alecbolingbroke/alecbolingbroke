@@ -1,6 +1,6 @@
 import { Reveal } from "../reveal";
 
-const doing = ["Build", "Automate", "Systematize"];
+const doing = ["Automate", "Integrate", "Systematize"];
 
 export function About() {
   return (
@@ -10,21 +10,20 @@ export function About() {
     >
       <div className="mx-auto grid max-w-[1500px] gap-10 sm:grid-cols-[1fr_1.6fr] sm:gap-8">
         <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
-          01 — What I do
+          What I do
         </p>
 
         <div className="max-w-2xl">
           <Reveal>
             <p className="font-display text-[clamp(1.75rem,4vw,3rem)] font-medium leading-[1.08] tracking-tight">
-              I&apos;m a builder. I work at the seam of AI, automation, and systems
-              design — turning manual work and disconnected tools into things that
-              run themselves.
+              I work at the seam of AI, automation, and systems design, turning
+              manual work and disconnected tools into things that run themselves.
             </p>
           </Reveal>
 
           <Reveal delay={0.1}>
             <p className="mt-8 max-w-md text-lg leading-snug text-muted">
-              I do it in the open — sharing what I build as I build it.
+              I do it in the open, sharing the work as it happens.
             </p>
           </Reveal>
 

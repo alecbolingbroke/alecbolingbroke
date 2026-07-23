@@ -26,7 +26,7 @@ export function Hero() {
         transition={{ duration: 1, ease: easeOut, delay: 1 }}
         className="mt-6 text-base text-muted sm:text-lg"
       >
-        Head of Applied AI — I build systems that do the quiet work.
+        I make AI systems that handle the busywork.
       </motion.p>
     </section>
   );

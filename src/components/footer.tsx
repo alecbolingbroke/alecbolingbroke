@@ -17,7 +17,7 @@ export function Footer() {
         <Reveal>
           <a
             href="mailto:alec.bolingbroke35@gmail.com"
-            className="block font-display text-[clamp(2.5rem,10vw,8rem)] font-bold leading-[0.9] tracking-[-0.03em] transition-colors hover:text-accent"
+            className="block font-display text-[clamp(2.25rem,8vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] transition-colors hover:text-accent"
           >
             Let&apos;s build
             <br />
