@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
 
 const BLOG_DIR = path.join(process.cwd(), "src/content/blog");
 
@@ -12,6 +11,27 @@ export type PostMeta = {
 };
 
 export type Post = PostMeta & { content: string };
+
+/**
+ * Minimal frontmatter parser for our own trusted markdown files: flat
+ * `key: "value"` pairs between `---` fences. Avoids a YAML dependency (and the
+ * vulnerabilities that come with one) since the frontmatter is never anything
+ * more complex than a few quoted strings.
+ */
+function parseFrontmatter(raw: string): {
+  data: Record<string, string>;
+  content: string;
+} {
+  const match = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(raw);
+  if (!match) return { data: {}, content: raw };
+
+  const data: Record<string, string> = {};
+  for (const line of match[1].split(/\r?\n/)) {
+    const m = /^([A-Za-z0-9_-]+):\s*(.*)$/.exec(line.trim());
+    if (m) data[m[1]] = m[2].trim().replace(/^["']|["']$/g, "");
+  }
+  return { data, content: raw.slice(match[0].length) };
+}
 
 /** Slugs for every `.md` file in the blog content dir. */
 export function getPostSlugs(): string[] {
@@ -26,7 +46,7 @@ export function getPostSlugs(): string[] {
 export function getPost(slug: string): Post | null {
   const file = path.join(BLOG_DIR, `${slug}.md`);
   if (!fs.existsSync(file)) return null;
-  const { data, content } = matter(fs.readFileSync(file, "utf8"));
+  const { data, content } = parseFrontmatter(fs.readFileSync(file, "utf8"));
   return {
     slug,
     title: data.title ?? slug,
