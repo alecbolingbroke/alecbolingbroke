@@ -22,11 +22,13 @@ export function Hero() {
 
   const stop = () => {
     loop.current?.stop();
-    // ease to the nearest flat orientation instead of snapping
+    // keep turning at the SAME speed to the nearest flat orientation, no quick swing
     const current = rotateY.get();
-    animate(rotateY, Math.round(current / 360) * 360, {
-      duration: 0.8,
-      ease: easeOut,
+    const target = Math.round(current / 360) * 360;
+    const distance = Math.abs(target - current);
+    animate(rotateY, target, {
+      duration: (distance / 360) * 14, // same 14s/revolution rate as the loop
+      ease: "linear",
     });
   };
 
@@ -58,7 +60,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: easeOut, delay: 1 }}
-          className="mt-6 text-base text-muted sm:text-lg"
+          className="mt-8 text-base text-muted sm:text-lg"
         >
           I make AI systems that handle the busywork.
         </motion.p>

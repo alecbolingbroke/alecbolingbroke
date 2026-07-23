@@ -67,7 +67,7 @@ export function SplitText({
       {text.split(" ").map((w, i) => (
         <span
           key={`${w}-${i}`}
-          className="inline-flex overflow-hidden pb-[0.12em] align-bottom"
+          className="inline-flex overflow-hidden pb-[0.3em] -mb-[0.2em] align-bottom"
         >
           <motion.span variants={word} className="inline-block">
             {w}
