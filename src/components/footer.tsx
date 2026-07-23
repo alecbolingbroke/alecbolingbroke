@@ -9,8 +9,8 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative px-5 pt-24 pb-8 text-center">
-      <div className="mx-auto flex max-w-[1500px] flex-col items-center">
+    <footer id="contact" className="relative px-5 pt-24 pb-8 sm:px-6">
+      <div className="mx-auto w-full max-w-[1500px]">
         <Reveal>
           <a
             href="mailto:alec.bolingbroke35@gmail.com"
@@ -20,7 +20,7 @@ export function Footer() {
           </a>
         </Reveal>
 
-        <div className="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2">
+        <div className="mt-12 flex flex-wrap gap-x-6 gap-y-2">
           {socials.map((s) => (
             <a
               key={s.label}
@@ -34,7 +34,7 @@ export function Footer() {
           ))}
         </div>
 
-        <span className="mt-10 font-mono text-[11px] uppercase tracking-widest text-muted">
+        <span className="mt-10 block font-mono text-[11px] uppercase tracking-widest text-muted">
           © 2026
         </span>
       </div>
