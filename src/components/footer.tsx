@@ -3,8 +3,8 @@ import { Reveal } from "./reveal";
 const socials = [
   { label: "Email", href: "mailto:alec.bolingbroke35@gmail.com" },
   { label: "GitHub", href: "https://github.com/alecbolingbroke" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
-  { label: "X", href: "https://x.com/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/alec-bolingbroke/" },
+  { label: "X", href: "https://x.com/AlecBolingbroke" },
 ];
 
 export function Footer() {
