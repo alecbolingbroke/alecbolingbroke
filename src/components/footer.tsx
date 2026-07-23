@@ -9,40 +9,34 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer
-      id="contact"
-      className="relative border-t border-line px-5 pt-24 pb-6 sm:px-6"
-    >
-      <div className="mx-auto max-w-[1500px]">
+    <footer id="contact" className="relative px-5 pt-24 pb-8 text-center">
+      <div className="mx-auto flex max-w-[1500px] flex-col items-center">
         <Reveal>
           <a
             href="mailto:alec.bolingbroke35@gmail.com"
-            className="block font-display text-[clamp(2.25rem,8vw,6rem)] font-bold leading-[0.95] tracking-[-0.03em] transition-colors hover:text-accent"
+            className="block whitespace-nowrap font-display text-[clamp(1.75rem,6vw,4.5rem)] font-bold leading-tight tracking-[-0.03em] transition-colors hover:text-accent"
           >
-            Let&apos;s build
-            <br />
-            something.
+            Let&apos;s build something.
           </a>
         </Reveal>
 
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-y-4 border-t border-line pt-6">
-          <div className="flex flex-wrap gap-x-6 gap-y-2">
-            {socials.map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target={s.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
-                className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-fg"
-              >
-                {s.label} ↗
-              </a>
-            ))}
-          </div>
-          <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
-            © 2026
-          </span>
+        <div className="mt-12 flex flex-wrap justify-center gap-x-6 gap-y-2">
+          {socials.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target={s.href.startsWith("http") ? "_blank" : undefined}
+              rel="noreferrer"
+              className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-fg"
+            >
+              {s.label} ↗
+            </a>
+          ))}
         </div>
+
+        <span className="mt-10 font-mono text-[11px] uppercase tracking-widest text-muted">
+          © 2026
+        </span>
       </div>
     </footer>
   );
