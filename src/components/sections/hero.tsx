@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { SplitText } from "../reveal";
 import { Clock } from "../clock";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
@@ -9,69 +10,61 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-5"
+      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-5 text-center"
     >
-      {/* corner ticks */}
-      <Tick className="left-4 top-24 sm:left-6" />
-      <Tick className="right-4 top-24 sm:right-6" />
-      <Tick className="bottom-16 left-4 sm:left-6" />
-      <Tick className="bottom-16 right-4 sm:right-6" />
+      {/* eyebrow — who */}
+      <motion.p
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: easeOut, delay: 0.3 }}
+        className="font-mono text-[11px] uppercase tracking-[0.35em] text-muted sm:text-xs"
+      >
+        Head of Applied AI — Building in the open
+      </motion.p>
 
-      {/* center statement — deliberately almost empty */}
-      <div className="text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: easeOut, delay: 0.4 }}
-          className="font-mono text-[11px] uppercase tracking-[0.35em] text-fg sm:text-xs"
-        >
-          Independent Builder — AI, Automation &amp; Systems
-        </motion.p>
+      {/* the name — front and center, the first thing you see */}
+      <SplitText
+        as="h1"
+        text="Alec Bolingbroke"
+        delay={0.5}
+        className="mt-5 max-w-[15ch] font-display text-[clamp(2.75rem,13vw,11rem)] font-black leading-[0.85] tracking-[-0.03em]"
+      />
 
-        <motion.p
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease: easeOut, delay: 0.7 }}
-          className="mt-6 font-display text-4xl italic tracking-tight text-accent sm:text-5xl"
+      {/* what — one line */}
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: easeOut, delay: 1 }}
+        className="mt-8 max-w-xl text-lg leading-snug text-fg sm:text-xl"
+      >
+        I build AI systems and automations that make the busywork disappear.
+      </motion.p>
+
+      {/* how to reach me */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: easeOut, delay: 1.15 }}
+        className="mt-8"
+      >
+        <a
+          href="mailto:alec.bolingbroke35@gmail.com"
+          className="text-base underline decoration-accent decoration-2 underline-offset-[6px] transition-colors hover:text-accent"
         >
-          &ldquo;©2026&rdquo;
-        </motion.p>
-      </div>
+          alec.bolingbroke35@gmail.com ↗
+        </a>
+      </motion.div>
 
       {/* edge chrome */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
+        transition={{ duration: 1, delay: 1.4 }}
         className="pointer-events-none absolute inset-x-4 bottom-5 flex items-end justify-between font-mono text-[11px] uppercase tracking-widest text-muted sm:inset-x-6"
       >
         <Clock label="LOCAL" />
-        <a
-          href="#work"
-          className="pointer-events-auto flex items-center gap-2 transition-colors hover:text-fg"
-        >
-          Scroll
-          <motion.span
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="text-accent"
-          >
-            ↓
-          </motion.span>
-        </a>
-        <span className="hidden sm:block">Building in public</span>
+        <span className="hidden sm:block">Lindon, UT</span>
       </motion.div>
     </section>
-  );
-}
-
-function Tick({ className }: { className?: string }) {
-  return (
-    <span
-      className={`pointer-events-none absolute text-accent/70 ${className}`}
-      aria-hidden
-    >
-      +
-    </span>
   );
 }

@@ -1,47 +1,41 @@
 import { Reveal } from "../reveal";
 
+const doing = ["Build", "Automate", "Systematize"];
+
 export function About() {
   return (
     <section
       id="about"
-      className="relative border-t border-line px-5 pt-24 pb-16 sm:px-6 sm:pt-32"
+      className="relative border-t border-line px-5 py-20 sm:px-6 sm:py-28"
     >
-      <div className="mx-auto max-w-[1500px]">
-        {/* giant Otherkind-style wordmark */}
-        <Reveal y={40}>
-          <h1 className="font-display text-[clamp(3.5rem,15vw,15rem)] font-black leading-[0.82] tracking-[-0.03em]">
-            Alec
-            <br />
-            Bolingbroke
-          </h1>
-        </Reveal>
+      <div className="mx-auto grid max-w-[1500px] gap-10 sm:grid-cols-[1fr_1.6fr] sm:gap-8">
+        <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+          01 — What I do
+        </p>
 
-        {/* short blurb + contact, set low-left like the reference */}
-        <div className="mt-16 grid gap-10 sm:mt-24 sm:grid-cols-[1fr_1.1fr] sm:gap-8">
-          <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
-            01 — Info
-          </p>
+        <div className="max-w-2xl">
+          <Reveal>
+            <p className="font-display text-[clamp(1.75rem,4vw,3rem)] font-medium leading-[1.08] tracking-tight">
+              I&apos;m a builder. I work at the seam of AI, automation, and systems
+              design — turning manual work and disconnected tools into things that
+              run themselves.
+            </p>
+          </Reveal>
 
-          <div className="max-w-md">
-            <Reveal className="space-y-5 text-lg leading-snug text-fg">
-              <p>
-                Independent builder working at the seam of AI, automation, and
-                systems design.
-              </p>
-              <p className="text-muted">
-                I build the plumbing that makes busywork disappear — integrations,
-                agents, internal tools — in the open.
-              </p>
-            </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-8 max-w-md text-lg leading-snug text-muted">
+              I do it in the open — sharing what I build as I build it.
+            </p>
+          </Reveal>
 
-            <Reveal delay={0.1}>
-              <a
-                href="mailto:alec.bolingbroke35@gmail.com"
-                className="mt-8 inline-block text-lg underline decoration-accent decoration-2 underline-offset-[6px] transition-colors hover:text-accent"
-              >
-                Get in touch ↗
-              </a>
-            </Reveal>
+          <div className="mt-12 flex flex-wrap gap-2">
+            {doing.map((d, i) => (
+              <Reveal key={d} delay={0.05 * i}>
+                <span className="rounded-full border border-line px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-fg/80">
+                  {d}
+                </span>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>

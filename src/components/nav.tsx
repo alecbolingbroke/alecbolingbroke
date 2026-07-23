@@ -5,8 +5,6 @@ import { Magnetic } from "./magnetic";
 import { Clock } from "./clock";
 
 const links = [
-  { label: "Work", href: "#work" },
-  { label: "Labs", href: "#labs" },
   { label: "Info", href: "#about" },
   { label: "Email", href: "mailto:alec.bolingbroke35@gmail.com" },
 ];
