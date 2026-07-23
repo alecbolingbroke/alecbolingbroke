@@ -34,7 +34,7 @@ export default async function PostPage({
       <div className="mx-auto w-full max-w-[720px]">
         <Link
           href="/blog"
-          className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-accent"
+          className="-mx-2 -my-3 inline-block px-2 py-3 font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-accent"
         >
           ← Blog
         </Link>

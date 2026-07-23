@@ -58,6 +58,27 @@
   a, button { -webkit-tap-highlight-color: transparent; }
 }
 
+/* ---------------------------------------------------------------------------
+   Load-in blur (see load-blur.tsx). CSS rather than JS so it can never get
+   stuck on if the client bundle fails to load, and so `prefers-reduced-motion`
+   below neutralises it for free. `backwards` fill leaves no filter behind once
+   it's done — a lingering one would trap the fixed nav and flatten the hero 3D.
+   A full-page blur is expensive to composite, so phones get a lighter radius.
+--------------------------------------------------------------------------- */
+@keyframes load-focus {
+  from { filter: blur(var(--load-blur)); opacity: 0.75; }
+  to   { filter: blur(0px); opacity: 1; }
+}
+
+.load-focus {
+  --load-blur: 10px;
+  animation: load-focus 1.1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@media (min-width: 640px) {
+  .load-focus { --load-blur: 18px; }
+}
+
 /* Lenis */
 html.lenis,
 html.lenis body { height: auto; }
@@ -78,6 +99,9 @@ html.lenis body { height: auto; }
   color: var(--fg);
   font-size: 1.0625rem;
   line-height: 1.7;
+  /* Long URLs and unbroken identifiers would otherwise push the page sideways
+     on a phone. */
+  overflow-wrap: anywhere;
 }
 .prose > * + * { margin-top: 1.15em; }
 .prose h2 {
@@ -129,5 +153,21 @@ html.lenis body { height: auto; }
   padding: 0;
   font-size: inherit;
 }
+.prose pre code { overflow-wrap: normal; }
 .prose hr { border: none; border-top: 1px solid var(--line); margin: 2.5em 0; }
-.prose img { max-width: 100%; border-radius: 10px; }
+.prose img { max-width: 100%; height: auto; border-radius: 10px; }
+/* GFM tables come out of react-markdown unwrapped, so they scroll themselves
+   rather than widening the page on a phone. */
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose th, .prose td {
+  border: 1px solid var(--line);
+  padding: 0.5em 0.75em;
+  text-align: left;
+}
+.prose th { font-weight: 600; }

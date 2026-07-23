@@ -13,15 +13,17 @@ export function Nav() {
       <Link
         href="/"
         aria-label="Alec Bolingbroke — home"
-        className="text-fg transition-colors hover:text-accent"
+        className="-m-2 p-2 text-fg transition-colors hover:text-accent"
       >
         <Logo className="h-9 w-9" />
       </Link>
-      <nav className="flex items-center gap-5">
+      {/* The negative margins pull back the padding that exists only to give
+          these 12px labels a thumb-sized tap target, so the layout is unchanged. */}
+      <nav className="-mr-2 flex items-center gap-3">
         <Link
           href="/blog"
           aria-current={onBlog ? "page" : undefined}
-          className={`font-mono text-xs uppercase tracking-widest transition-colors ${
+          className={`-my-2 px-2 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${
             onBlog ? "text-accent" : "text-muted hover:text-accent"
           }`}
         >
@@ -29,7 +31,7 @@ export function Nav() {
         </Link>
         <a
           href="mailto:alec.bolingbroke35@gmail.com"
-          className="font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
+          className="-my-2 px-2 py-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
         >
           Email ↗
         </a>

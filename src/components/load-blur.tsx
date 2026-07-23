@@ -1,28 +1,19 @@
-"use client";
-
-import { useRef, type ReactNode } from "react";
-import { motion } from "motion/react";
-import { EASE_OUT } from "@/lib/motion";
+import type { ReactNode } from "react";
 
 /**
- * On load, the whole page is blurry for ~a second, then focuses. The filter is
- * removed imperatively once the intro finishes so it can't create a containing
- * block for the fixed nav or flatten the hero's 3D rotation afterward.
+ * On load, the whole page is blurry for ~a second, then focuses.
+ *
+ * This is a plain CSS animation (`.load-focus` in globals.css), not a Motion
+ * one, and deliberately so: the blur used to be an inline style rendered by the
+ * server that only JavaScript could clear, so any deploy where the client
+ * chunks failed to load left the entire site permanently out of focus. CSS
+ * can't get stuck that way — and it costs the mobile GPU far less.
+ *
+ * The animation uses `fill-mode: backwards`, so once it ends the element falls
+ * back to having no filter at all. That matters: a lingering filter would make
+ * this a containing block for the fixed nav and would flatten the hero's 3D
+ * rotation.
  */
 export function LoadBlur({ children }: { children: ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ filter: "blur(18px)", opacity: 0.75 }}
-      animate={{ filter: "blur(0px)", opacity: 1 }}
-      transition={{ duration: 1.1, ease: EASE_OUT }}
-      onAnimationComplete={() => {
-        if (ref.current) ref.current.style.filter = "none";
-      }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className="load-focus">{children}</div>;
 }

@@ -7,15 +7,29 @@ import { motion, useMotionValue } from "motion/react";
  * Big vintage arrow pointer in the hyperlink blue, replacing the native cursor
  * (hidden via globals.css on fine-pointer devices). The tip sits at the pointer
  * position. Hidden when the pointer leaves the page (or the window loses focus)
- * so it doesn't freeze at the edge. On touch devices there's no mousemove, so
- * it simply stays hidden.
+ * so it doesn't freeze at the edge.
+ *
+ * Touch devices don't render it at all — the same media query that hides the
+ * native cursor in globals.css — so phones skip the fixed element and the
+ * mousemove listeners entirely rather than carrying an invisible one around.
  */
 export function Cursor() {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const [visible, setVisible] = useState(false);
+  const [fine, setFine] = useState(false);
 
   useEffect(() => {
+    const q = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => setFine(q.matches);
+    sync();
+    q.addEventListener("change", sync);
+    return () => q.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    if (!fine) return;
+
     const move = (e: MouseEvent) => {
       x.set(e.clientX);
       y.set(e.clientY);
@@ -31,7 +45,9 @@ export function Cursor() {
       document.documentElement.removeEventListener("mouseleave", hide);
       window.removeEventListener("blur", hide);
     };
-  }, [x, y]);
+  }, [x, y, fine]);
+
+  if (!fine) return null;
 
   return (
     <motion.div

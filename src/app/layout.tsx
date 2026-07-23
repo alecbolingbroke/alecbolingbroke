@@ -44,6 +44,19 @@ export default function RootLayout({
       className={`${inter.variable} ${geistMono.variable} antialiased`}
     >
       <body>
+        {/* Inlined in the HTML itself, so it runs even when the chunks under
+            /_next/static don't. If React hasn't hydrated by now the bundle is
+            gone, so unhide the scroll reveals — their hidden state is
+            server-rendered and would otherwise sit at opacity 0 forever, taking
+            the About copy and the footer's email CTA with it. It clears the
+            inline styles directly rather than via a class so it still works when
+            the stylesheet is missing too. See reveal.tsx. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "setTimeout(function(){if(document.documentElement.dataset.hydrated==='true')return;document.querySelectorAll('.reveal').forEach(function(n){n.style.opacity='1';n.style.filter='none'})},4000)",
+          }}
+        />
         <Cursor />
         <SmoothScroll>
           <LoadBlur>

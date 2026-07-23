@@ -20,23 +20,28 @@ export function Footer() {
           </a>
         </Reveal>
 
-        <div className="mt-12 flex flex-wrap gap-x-6 gap-y-2">
+        {/* -my-2 / py-2 buys these 11px labels a thumb-sized tap target without
+            changing the spacing. */}
+        <div className="mt-12 -ml-2 flex flex-wrap gap-x-4 gap-y-0">
           {socials.map((s) => (
             <a
               key={s.label}
               href={s.href}
               target={s.href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
-              className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-accent"
+              className="px-2 py-3 font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-accent"
             >
               {s.label} ↗
             </a>
           ))}
         </div>
 
-        <div className="mt-10 flex items-center gap-4 font-mono text-[11px] uppercase tracking-widest text-muted">
+        <div className="mt-8 flex flex-wrap items-center gap-x-4 font-mono text-[11px] uppercase tracking-widest text-muted">
           <span>© 2026</span>
-          <a href="/llms.txt" className="transition-colors hover:text-accent">
+          <a
+            href="/llms.txt"
+            className="-mx-2 px-2 py-3 transition-colors hover:text-accent"
+          >
             Hey AI, learn about me
           </a>
         </div>
