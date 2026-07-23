@@ -1,66 +1,62 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { motion } from "motion/react";
 import { Magnetic } from "./magnetic";
-import { cn } from "@/lib/utils";
+import { Clock } from "./clock";
 
 const links = [
   { label: "Work", href: "#work" },
   { label: "Labs", href: "#labs" },
-  { label: "About", href: "#about" },
+  { label: "Info", href: "#about" },
+  { label: "Email", href: "mailto:alec.bolingbroke35@gmail.com" },
 ];
 
 export function Nav() {
-  const { scrollY } = useScroll();
-  const [scrolled, setScrolled] = useState(false);
-
-  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 40));
-
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-      className="fixed inset-x-0 top-0 z-[100]"
+      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+      className="fixed inset-x-0 top-0 z-[100] flex items-start justify-between p-4 sm:p-5"
     >
-      <div
-        className={cn(
-          "mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 transition-colors duration-500 sm:px-8",
-          scrolled &&
-            "border-b border-line/60 bg-bg/70 backdrop-blur-md",
-        )}
-      >
-        <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-accent text-[11px] font-semibold text-accent-fg">
-            AB
-          </span>
-          <span className="hidden font-display text-sm tracking-tight sm:block">
-            Alec Bolingbroke
-          </span>
+      {/* left: bordered pill cluster */}
+      <div className="flex items-center gap-1.5 rounded-2xl border border-line bg-bg/70 p-1.5 backdrop-blur-md">
+        <a
+          href="#top"
+          className="px-2.5 font-display text-base font-semibold tracking-tight"
+        >
+          ( AB )
         </a>
-
-        <nav className="flex items-center gap-1 sm:gap-2">
-          {links.map((l) => (
-            <Magnetic key={l.href} strength={0.4}>
-              <a
-                href={l.href}
-                className="rounded-full px-3 py-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-fg"
-              >
-                {l.label}
-              </a>
-            </Magnetic>
-          ))}
-          <Magnetic strength={0.5}>
-            <a
-              href="#contact"
-              className="ml-1 rounded-full border border-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-fg transition-colors hover:border-accent hover:text-accent"
-            >
-              Contact
-            </a>
-          </Magnetic>
-        </nav>
+        {links.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            target={l.href.startsWith("mailto") ? undefined : undefined}
+            className="rounded-xl bg-fg/[0.04] px-3 py-2 font-mono text-[11px] uppercase tracking-widest text-fg/80 transition-colors hover:bg-fg/[0.09] hover:text-fg"
+          >
+            {l.label}
+          </a>
+        ))}
       </div>
+
+      {/* right: availability + live clock chrome */}
+      <div className="hidden items-center gap-2.5 rounded-2xl border border-line bg-bg/70 px-3.5 py-2.5 backdrop-blur-md sm:flex">
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+        </span>
+        <Clock className="font-mono text-[11px] uppercase tracking-widest text-muted" />
+      </div>
+
+      {/* mobile contact */}
+      <Magnetic strength={0.4} className="sm:hidden">
+        <a
+          href="#contact"
+          className="rounded-2xl border border-fg bg-fg px-4 py-2.5 font-mono text-[11px] uppercase tracking-widest text-bg"
+        >
+          Contact
+        </a>
+      </Magnetic>
     </motion.header>
   );
 }

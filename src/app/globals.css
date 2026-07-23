@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Design tokens — change --accent to re-skin the whole site in one line.
+   Design tokens — light "paper" theme. Change --accent for the signal color.
+   To flip dark later, swap --bg/--fg/--line/--surface here; nothing else.
 --------------------------------------------------------------------------- */
 :root {
-  --bg: #0a0a0b;
-  --surface: #111114;
-  --fg: #f4f3ee;
-  --muted: #86867e;
-  --line: #212127;
-  --accent: #c7f24a; /* voltage lime — the single signal color, used sparingly */
-  --accent-fg: #0a0a0b;
+  --bg: #f3f2ec;       /* warm paper */
+  --surface: #eceae1;  /* slightly recessed paper */
+  --fg: #16150f;       /* near-black, warm */
+  --muted: #75736a;    /* secondary text */
+  --line: #dcdace;     /* hairlines */
+  --accent: #2b2bff;   /* electric blue — the single signal color */
+  --accent-fg: #f3f2ec;
 }
 
 @theme inline {
@@ -22,7 +23,7 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
 
-  --font-display: var(--font-space-grotesk);
+  --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
@@ -42,8 +43,8 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-display), system-ui, sans-serif;
-    font-weight: 500;
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 600;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
@@ -53,7 +54,6 @@
     color: var(--accent-fg);
   }
 
-  /* Hide the native cursor only where we render our own. */
   @media (hover: hover) and (pointer: fine) {
     * { cursor: none; }
   }
@@ -61,14 +61,15 @@
   a, button { -webkit-tap-highlight-color: transparent; }
 }
 
-/* Film grain — subtle, over everything, never intercepts input. */
+/* Paper grain — multiply so it reads as texture on light, never intercepts input. */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 200;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -78,11 +79,6 @@ html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

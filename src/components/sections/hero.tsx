@@ -1,75 +1,77 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import { SplitText } from "../reveal";
+import { motion } from "motion/react";
+import { Clock } from "../clock";
 
 const easeOut = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 160]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
     <section
       id="top"
-      ref={ref}
-      className="relative flex min-h-[100svh] flex-col justify-between overflow-hidden px-5 pt-32 pb-8 sm:px-8"
+      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-5"
     >
-      <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-[1400px]">
-        {/* eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
+      {/* corner ticks */}
+      <Tick className="left-4 top-24 sm:left-6" />
+      <Tick className="right-4 top-24 sm:right-6" />
+      <Tick className="bottom-16 left-4 sm:left-6" />
+      <Tick className="bottom-16 right-4 sm:right-6" />
+
+      {/* center statement — deliberately almost empty */}
+      <div className="text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: easeOut, delay: 0.3 }}
-          className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-muted"
+          transition={{ duration: 1, ease: easeOut, delay: 0.4 }}
+          className="font-mono text-[11px] uppercase tracking-[0.35em] text-fg sm:text-xs"
         >
-          <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-          Independent Builder — Innovation Lab
-        </motion.div>
+          Independent Builder — AI, Automation &amp; Systems
+        </motion.p>
 
-        {/* headline */}
-        <h1 className="mt-8 font-display text-[clamp(3rem,12vw,10.5rem)] leading-[0.9] tracking-[-0.03em]">
-          <SplitText as="span" text="I build systems" className="block" delay={0.45} />
-          <SplitText as="span" text="that do the" className="block" delay={0.6} />
-          <span className="block">
-            <SplitText as="span" text="quiet work." className="inline-block text-accent" delay={0.75} />
-          </span>
-        </h1>
-      </motion.div>
+        <motion.p
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, ease: easeOut, delay: 0.7 }}
+          className="mt-6 font-display text-4xl italic tracking-tight text-accent sm:text-5xl"
+        >
+          &ldquo;©2026&rdquo;
+        </motion.p>
+      </div>
 
-      {/* bottom row */}
+      {/* edge chrome */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="mx-auto flex w-full max-w-[1400px] flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
+        className="pointer-events-none absolute inset-x-4 bottom-5 flex items-end justify-between font-mono text-[11px] uppercase tracking-widest text-muted sm:inset-x-6"
       >
-        <p className="max-w-md text-balance text-sm leading-relaxed text-muted sm:text-base">
-          I work at the seam of AI, automation, and systems design — building the
-          tools and pipelines that let people skip the busywork. This site is an
-          open lab of what I&apos;m making.
-        </p>
-
+        <Clock label="LOCAL" />
         <a
           href="#work"
-          className="group flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-fg"
+          className="pointer-events-auto flex items-center gap-2 transition-colors hover:text-fg"
         >
-          Scroll to explore
+          Scroll
           <motion.span
-            animate={{ y: [0, 6, 0] }}
+            animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
             className="text-accent"
           >
             ↓
           </motion.span>
         </a>
+        <span className="hidden sm:block">Building in public</span>
       </motion.div>
     </section>
+  );
+}
+
+function Tick({ className }: { className?: string }) {
+  return (
+    <span
+      className={`pointer-events-none absolute text-accent/70 ${className}`}
+      aria-hidden
+    >
+      +
+    </span>
   );
 }
