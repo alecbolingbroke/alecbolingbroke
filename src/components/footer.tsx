@@ -16,7 +16,7 @@ export function Footer() {
             href="mailto:alec.bolingbroke35@gmail.com"
             className="block whitespace-nowrap font-display text-[clamp(1.75rem,6vw,4.5rem)] font-bold leading-tight tracking-[-0.03em] transition-colors hover:text-accent"
           >
-            Let&apos;s build something.
+            Let&apos;s build.
           </a>
         </Reveal>
 
@@ -27,16 +27,19 @@ export function Footer() {
               href={s.href}
               target={s.href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
-              className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-fg"
+              className="font-mono text-[11px] uppercase tracking-widest text-muted transition-colors hover:text-accent"
             >
               {s.label} ↗
             </a>
           ))}
         </div>
 
-        <span className="mt-10 block font-mono text-[11px] uppercase tracking-widest text-muted">
-          © 2026
-        </span>
+        <div className="mt-10 flex items-center gap-4 font-mono text-[11px] uppercase tracking-widest text-muted">
+          <span>© 2026</span>
+          <a href="/llms.txt" className="transition-colors hover:text-accent">
+            Hey AI, learn about me
+          </a>
+        </div>
       </div>
     </footer>
   );
