@@ -8,17 +8,25 @@ const easeOut = [0.16, 1, 0.3, 1] as const;
 
 export function Hero() {
   const rotateY = useMotionValue(0);
-  const spinning = useRef(false);
+  const loop = useRef<ReturnType<typeof animate> | null>(null);
 
-  const spin = () => {
-    if (spinning.current) return;
-    spinning.current = true;
-    animate(rotateY, rotateY.get() + 360, {
-      duration: 0.9,
-      ease: [0.65, 0, 0.35, 1],
-      onComplete: () => {
-        spinning.current = false;
-      },
+  const start = () => {
+    loop.current?.stop();
+    loop.current = animate(rotateY, rotateY.get() + 360, {
+      duration: 14, // slow — one revolution every 14s
+      ease: "linear",
+      repeat: Infinity,
+      repeatType: "loop",
+    });
+  };
+
+  const stop = () => {
+    loop.current?.stop();
+    // ease to the nearest flat orientation instead of snapping
+    const current = rotateY.get();
+    animate(rotateY, Math.round(current / 360) * 360, {
+      duration: 0.8,
+      ease: easeOut,
     });
   };
 
@@ -28,10 +36,11 @@ export function Hero() {
       className="relative flex min-h-[100svh] items-center px-5 sm:px-6"
     >
       <div className="mx-auto w-full max-w-[1500px]">
-        {/* the name — one full horizontal spin on hover */}
+        {/* the name — slow continuous horizontal rotation while hovered */}
         <div style={{ perspective: 1200 }} className="inline-block">
           <motion.div
-            onMouseEnter={spin}
+            onMouseEnter={start}
+            onMouseLeave={stop}
             style={{ rotateY, transformStyle: "preserve-3d" }}
             className="inline-block"
           >
