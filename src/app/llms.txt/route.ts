@@ -31,7 +31,7 @@ export function GET() {
 Alec takes an idea and makes it run: tools, systems, hardware, and the automation in between. He works in the open, publishes things before they're finished, and writes about them here.
 
 ## Pages
-- [Home](${BASE}/): Name, what he does, what he has shipped, what he has in progress, and contact.
+- [Home](${BASE}/): Name, what he does, and contact.\n- [Shipped](${BASE}/shipped): Things he has built that are done and in use.\n- [Building](${BASE}/building): What he has in progress right now, finished or not.
 - [Blog](${BASE}/blog): Notes from building, in the open.
 
 ## What I've shipped
