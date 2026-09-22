@@ -1,6 +1,9 @@
 /**
  * What I'm building — the list rendered on the home page and in /llms.txt.
  *
+ * In flight only. Once something actually runs for someone it moves to
+ * SHIPPED in ./shipped.ts.
+ *
  * Deliberately present tense and deliberately unfinished: this is the public
  * face of building in the open, so things belong here before they're done.
  * Edit this array and both surfaces update.
@@ -24,11 +27,6 @@ export const BUILDING: BuildingItem[] = [
   {
     name: "Atelier",
     blurb: "A finance tool for creative people with irregular income.",
-  },
-  {
-    name: "A second brain",
-    blurb:
-      "An AI system that runs my work and my life, keeps its own notes, and gets more useful the longer it runs.",
   },
   {
     name: "A marketing engine for a photography business",

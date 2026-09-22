@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/blog";
 import { BUILDING } from "@/content/building";
+import { SHIPPED } from "@/content/shipped";
 
 // Prerender to a static file at build time (served at /llms.txt).
 export const dynamic = "force-static";
@@ -19,6 +20,10 @@ export function GET() {
     (b) => `- ${b.name}: ${b.blurb}`,
   ).join("\n");
 
+  const shippedLines = SHIPPED.map(
+    (s) => `- ${s.name}: ${s.blurb}`,
+  ).join("\n");
+
   const body = `# Alec Bolingbroke
 
 > Independent maker working across software, hardware, and automation. Personal site: who he is, what he makes, what he has in progress right now, how to reach him, and a blog written in the open.
@@ -26,8 +31,11 @@ export function GET() {
 Alec takes an idea and makes it run: tools, systems, hardware, and the automation in between. He works in the open, publishes things before they're finished, and writes about them here.
 
 ## Pages
-- [Home](${BASE}/): Name, what he does, what he has in progress, and contact.
+- [Home](${BASE}/): Name, what he does, what he has shipped, what he has in progress, and contact.
 - [Blog](${BASE}/blog): Notes from building, in the open.
+
+## What I've shipped
+${shippedLines}
 
 ## What I'm building
 ${buildingLines}
