@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/lib/blog";
+import { BUILDING } from "@/content/building";
 
 // Prerender to a static file at build time (served at /llms.txt).
 export const dynamic = "force-static";
@@ -14,15 +15,22 @@ export function GET() {
         .join("\n")
     : "- No posts yet.";
 
+  const buildingLines = BUILDING.map(
+    (b) => `- ${b.name}: ${b.blurb}`,
+  ).join("\n");
+
   const body = `# Alec Bolingbroke
 
-> Independent builder working at the seam of AI, automation, and systems design. Personal site: who he is, what he does, how to reach him, and a blog written in the open.
+> Independent maker working across software, hardware, and automation. Personal site: who he is, what he makes, what he has in progress right now, how to reach him, and a blog written in the open.
 
-Alec builds AI systems and automations that remove busywork: integrations, agents, and the quiet plumbing that lets people skip repetitive work. He builds in the open and writes about it here.
+Alec takes an idea and makes it run: tools, systems, hardware, and the automation in between. He works in the open, publishes things before they're finished, and writes about them here.
 
 ## Pages
-- [Home](${BASE}/): Name, what he does, and contact.
+- [Home](${BASE}/): Name, what he does, what he has in progress, and contact.
 - [Blog](${BASE}/blog): Notes from building, in the open.
+
+## What I'm building
+${buildingLines}
 
 ## Blog posts
 ${postLines}

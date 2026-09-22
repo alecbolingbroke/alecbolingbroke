@@ -95,7 +95,7 @@ export function Hero() {
         </div>
 
         <p className="mt-8 text-base text-muted sm:text-lg">
-          I make AI systems that handle the busywork.
+          I make what I want to exist.
         </p>
       </div>
     </section>

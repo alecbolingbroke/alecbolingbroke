@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     default: "Alec Bolingbroke",
     template: "%s · Alec Bolingbroke",
   },
-  description: "I make AI systems that handle the busywork.",
+  description: "I make what I want to exist. Software, hardware, and automation, in the open.",
   openGraph: {
     title: "Alec Bolingbroke",
-    description: "I make AI systems that handle the busywork.",
+    description: "I make what I want to exist. Software, hardware, and automation, in the open.",
     url: "https://alecbolingbroke.com",
     siteName: "Alec Bolingbroke",
     type: "website",

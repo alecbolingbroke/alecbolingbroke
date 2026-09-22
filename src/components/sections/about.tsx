@@ -6,8 +6,8 @@ export function About() {
       <div className="mx-auto w-full max-w-[1500px]">
         <Reveal>
           <p className="max-w-3xl font-display text-[clamp(1.75rem,4vw,3rem)] font-medium leading-[1.08] tracking-tight">
-            I work at the seam of AI, automation, and systems design, turning
-            manual work and disconnected tools into things that run themselves.
+            Software, hardware, automation, whatever the idea needs. I take the
+            thing that only exists in my head and make it run.
           </p>
         </Reveal>
 
