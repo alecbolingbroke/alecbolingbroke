@@ -1,4 +1,5 @@
-import type { NextConfig } from "next";
+// Plain JS, not TS: Hostinger's build box falls back to the WASM compiler (glibc
+// too old for native SWC), which can't compile a next.config.ts.
 
 /**
  * Routes that serve HTML. Hashed assets under `/_next/static` are deliberately
@@ -6,7 +7,8 @@ import type { NextConfig } from "next";
  */
 const HTML_ROUTES = ["/", "/built", "/building", "/blog", "/blog/:slug", "/llms.txt"];
 
-const nextConfig: NextConfig = {
+/** @type {import("next").NextConfig} */
+const nextConfig = {
   /**
    * Next tags prerendered pages with `s-maxage=31536000` and expects the CDN to
    * honour its `x-nextjs-stale-time` hint. Hostinger's CDN honours the year and
