@@ -9,8 +9,8 @@ import { EASE_OUT } from "@/lib/motion";
  *
  * The hidden state is server-rendered, so the `reveal` class is load-bearing:
  * the inline fallback script in layout.tsx uses it to force these visible if
- * hydration never happens. Without that, a failed bundle would leave the About
- * copy and the footer's email CTA invisible rather than merely un-animated.
+ * hydration never happens. Without that, a failed bundle would leave the work
+ * lists and the footer line invisible rather than merely un-animated.
  */
 export function Reveal({
   children,

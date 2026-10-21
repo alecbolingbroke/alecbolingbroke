@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     default: "Alec Bolingbroke",
     template: "%s · Alec Bolingbroke",
   },
-  description: "I make what I want to exist. Software, hardware, and automation, in the open.",
+  description: "I build things.",
   openGraph: {
     title: "Alec Bolingbroke",
-    description: "I make what I want to exist. Software, hardware, and automation, in the open.",
+    description: "I build things.",
     url: "https://alecbolingbroke.com",
     siteName: "Alec Bolingbroke",
     type: "website",
@@ -48,7 +48,7 @@ export default function RootLayout({
             /_next/static don't. If React hasn't hydrated by now the bundle is
             gone, so unhide the scroll reveals — their hidden state is
             server-rendered and would otherwise sit at opacity 0 forever, taking
-            the About copy and the footer's email CTA with it. It clears the
+            the work lists and the footer line with it. It clears the
             inline styles directly rather than via a class so it still works when
             the stylesheet is missing too. See reveal.tsx. */}
         <script

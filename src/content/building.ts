@@ -1,8 +1,8 @@
 /**
- * What I'm building — the list rendered on the home page and in /llms.txt.
+ * What I'm building — the list rendered on /building and in /llms.txt.
  *
  * In flight only. Once something actually runs for someone it moves to
- * SHIPPED in ./shipped.ts.
+ * BUILT in ./built.ts.
  *
  * Deliberately present tense and deliberately unfinished: this is the public
  * face of building in the open, so things belong here before they're done.

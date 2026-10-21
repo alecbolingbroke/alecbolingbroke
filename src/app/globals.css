@@ -56,6 +56,12 @@
   }
 
   a, button { -webkit-tap-highlight-color: transparent; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 /* ---------------------------------------------------------------------------

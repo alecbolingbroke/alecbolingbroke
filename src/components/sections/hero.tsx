@@ -93,10 +93,6 @@ export function Hero() {
             </h1>
           </motion.div>
         </div>
-
-        <p className="mt-8 text-base text-muted sm:text-lg">
-          I make what I want to exist.
-        </p>
       </div>
     </section>
   );

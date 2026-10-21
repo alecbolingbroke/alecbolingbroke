@@ -11,7 +11,6 @@ export default function BuildingPage() {
   return (
     <WorkList
       title="What I'm building"
-      intro="In progress, present tense, deliberately unfinished. Things belong here before they're done."
       items={BUILDING}
     />
   );

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Logo } from "./logo";
 
 const LINKS = [
-  { href: "/shipped", label: "Shipped" },
+  { href: "/built", label: "Built" },
   { href: "/building", label: "Building" },
   { href: "/blog", label: "Blog" },
 ];
@@ -24,7 +24,7 @@ export function Nav() {
       </Link>
       {/* The negative margins pull back the padding that exists only to give
           these 12px labels a thumb-sized tap target, so the layout is unchanged. */}
-      <nav className="-mr-2 flex items-center gap-2 sm:gap-3">
+      <nav className="-mr-2 flex items-center sm:gap-3">
         {LINKS.map(({ href, label }) => {
           const active = pathname.startsWith(href);
           return (

@@ -5,7 +5,7 @@ import { Reveal } from "@/components/reveal";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Notes on building AI systems and automation, in the open.",
+  description: "Notes from building things, rough parts included.",
 };
 
 export default function BlogIndex() {

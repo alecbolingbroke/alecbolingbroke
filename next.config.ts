@@ -4,7 +4,7 @@ import type { NextConfig } from "next";
  * Routes that serve HTML. Hashed assets under `/_next/static` are deliberately
  * absent — Next marks those immutable and that must stay.
  */
-const HTML_ROUTES = ["/", "/blog", "/blog/:slug", "/llms.txt"];
+const HTML_ROUTES = ["/", "/built", "/building", "/blog", "/blog/:slug", "/llms.txt"];
 
 const nextConfig: NextConfig = {
   /**
@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
    * year. No stale-while-revalidate on purpose: stale HTML here isn't a
    * slightly-old copy, it's a page pointing at chunks that 404.
    */
+  // The Built page lived at /shipped until 2026-10-20; keep shared links working.
+  async redirects() {
+    return [{ source: "/shipped", destination: "/built", permanent: true }];
+  },
+
   async headers() {
     return HTML_ROUTES.map((source) => ({
       source,

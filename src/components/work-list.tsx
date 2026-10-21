@@ -6,17 +6,15 @@ export type WorkItem = {
 };
 
 /**
- * The shared body of /shipped and /building. Both pages are the same shape —
- * a title, a line of framing, and a list of name + blurb rows — so the rows
+ * The shared body of /built and /building. Both pages are the same shape —
+ * a title and a list of name + blurb rows — so the rows
  * live here rather than being copied into each route.
  */
 export function WorkList({
   title,
-  intro,
   items,
 }: {
   title: string;
-  intro: string;
   items: WorkItem[];
 }) {
   return (
@@ -25,8 +23,6 @@ export function WorkList({
         <h1 className="max-w-[14ch] font-display text-[clamp(2.5rem,9vw,7rem)] font-bold leading-[0.9] tracking-[-0.04em]">
           {title}
         </h1>
-
-        <p className="mt-8 max-w-xl text-lg leading-snug text-muted">{intro}</p>
 
         {/* Rows are divs rather than a ul/li: Reveal renders a div, which
             can't legally sit inside a ul. */}
