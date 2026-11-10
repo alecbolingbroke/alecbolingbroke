@@ -32,6 +32,8 @@
     "postcss": "8.5.29",
     "flatted": "3.4.2",
     "@eslint-community/eslint-utils": "4.9.1",
-    "baseline-browser-mapping": "2.11.0"
+    "baseline-browser-mapping": "2.11.0",
+    "zod": "^4.6.6",
+    "minimatch": "^11.0.1"
   }
 }
