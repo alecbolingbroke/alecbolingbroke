@@ -5,7 +5,8 @@
  * Routes that serve HTML. Hashed assets under `/_next/static` are deliberately
  * absent — Next marks those immutable and that must stay.
  */
-const HTML_ROUTES = ["/", "/built", "/building", "/blog", "/blog/:slug", "/llms.txt"];
+// The live sketch (public/live-sketch) is on the list too: its files are not hashed, so they need the short TTL.
+const HTML_ROUTES = ["/", "/built", "/building", "/blog", "/blog/:slug", "/llms.txt", "/live-sketch", "/live-sketch/:path*"];
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
@@ -25,6 +26,12 @@ const nextConfig = {
   // The Built page lived at /shipped until 2026-10-20; keep shared links working.
   async redirects() {
     return [{ source: "/shipped", destination: "/built", permanent: true }];
+  },
+
+  // public/live-sketch is a copy of github.com/alecbolingbroke/live-sketch (a static page, no build), served at the
+  // clean address /live-sketch. The page itself puts a trailing slash back so its relative sketch.js resolves.
+  async rewrites() {
+    return [{ source: "/live-sketch", destination: "/live-sketch/index.html" }];
   },
 
   async headers() {

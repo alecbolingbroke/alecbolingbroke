@@ -17,7 +17,7 @@ export function GET() {
     : "- No posts yet.";
 
   const buildingLines = BUILDING.map(
-    (b) => `- ${b.name}: ${b.blurb}`,
+    (b) => `- ${b.href ? `[${b.name}](${BASE}${b.href})` : b.name}: ${b.blurb}`,
   ).join("\n");
 
   const builtLines = BUILT.map(

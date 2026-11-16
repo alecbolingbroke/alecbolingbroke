@@ -3,6 +3,7 @@ import { Reveal } from "./reveal";
 export type WorkItem = {
   name: string;
   blurb: string;
+  href?: string;
 };
 
 /**
@@ -31,7 +32,13 @@ export function WorkList({
             <Reveal key={item.name} delay={0.04 * i}>
               <div className="border-t border-line py-7 sm:py-8">
                 <h2 className="font-display text-[clamp(1.5rem,3vw,2.25rem)] font-medium leading-tight tracking-tight">
-                  {item.name}
+                  {item.href ? (
+                    <a href={item.href} className="underline decoration-1 underline-offset-4">
+                      {item.name}
+                    </a>
+                  ) : (
+                    item.name
+                  )}
                 </h2>
                 <p className="mt-3 max-w-xl text-base leading-snug text-muted sm:text-lg">
                   {item.blurb}

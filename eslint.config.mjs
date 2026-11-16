@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // A plain static page copied from the live-sketch repo, not app code.
+    "public/live-sketch/**",
   ]),
 ]);
 
