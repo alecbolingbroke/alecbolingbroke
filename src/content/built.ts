@@ -15,7 +15,7 @@ export const BUILT: BuiltItem[] = [
   {
     name: "A personal AI operating system",
     blurb:
-      "A folder of notes plus a set of rules any AI agent can follow. It takes in what I give it, keeps my tasks and journal, sweeps my inbox, and logs everything it does. It works with any model, because the rules and the notes are the part worth keeping.",
+      "A context layer for AI agents. It holds what I know and what I'm working on as a linked knowledge graph in markdown, so every session starts with context instead of a blank page. An agent reads it, keeps it current and drafts my next steps, with a human in the loop on anything that goes out. Built with rules loaded on demand and an audit log of every action. A team version is in pilot at work, served to teammates' assistants over MCP with vector search.",
   },
   {
     name: "An AI assistant for 1,500 field reps",
