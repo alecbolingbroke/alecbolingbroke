@@ -1,4 +1,4 @@
-// Live sketch: a Gray-Scott reaction-diffusion pattern that grows out of a typed word or a photo.
+// Sketch: a Gray-Scott reaction-diffusion pattern that grows out of a typed word or a photo.
 // It fills the frame with coral, with tighter markings inside the word or photo, then keeps a slow life of its own
 // (its rules drift, so it never quite settles). With the microphone on,
 // music is a gentle layer on top, and each beat sends a soft swell through it. Plain WebGL2, no dependencies. Nothing is uploaded anywhere.
@@ -133,7 +133,7 @@ void main() {
   const fixedSteps = +params.get("steps"); // ?steps=N fast-forwards (used by the self-test)
   const RATE = 720; // simulation steps per second, whatever the screen's refresh rate (a 120 Hz screen must not run it twice as fast)
 
-  let w = 0, h = 0, src = 0, source = { text: "live sketch" }, brush = [0, 0, 0, 0], tint = [.98, .45, .36];
+  let w = 0, h = 0, src = 0, source = { text: "sketch" }, brush = [0, 0, 0, 0], tint = [.98, .45, .36];
   const ripples = [], rips = new Float32Array(16), NONE = new Float32Array(16);
   const swell = (strength) => { if (!calm) ripples.push({ r: .05, s: strength }); }; // only a beat from the microphone sends one
 
