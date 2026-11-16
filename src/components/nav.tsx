@@ -7,6 +7,7 @@ import { Logo } from "./logo";
 const LINKS = [
   { href: "/built", label: "Built" },
   { href: "/building", label: "Building" },
+  { href: "/resume", label: "Resume", compactLabel: "CV" },
   { href: "/blog", label: "Blog" },
 ];
 
@@ -25,7 +26,7 @@ export function Nav() {
       {/* The negative margins pull back the padding that exists only to give
           these 12px labels a thumb-sized tap target, so the layout is unchanged. */}
       <nav className="-mr-2 flex items-center sm:gap-3">
-        {LINKS.map(({ href, label }) => {
+        {LINKS.map(({ href, label, compactLabel }) => {
           const active = pathname.startsWith(href);
           return (
             <Link
@@ -36,13 +37,18 @@ export function Nav() {
                 active ? "text-accent" : "text-muted hover:text-accent"
               }`}
             >
-              {label}
+              {compactLabel ? (
+                <>
+                  <span className="sm:hidden">{compactLabel}</span>
+                  <span className="hidden sm:inline">{label}</span>
+                </>
+              ) : label}
             </Link>
           );
         })}
         <a
           href="mailto:alec.bolingbroke35@gmail.com"
-          className="-my-2 px-2 py-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
+          className="-my-2 hidden px-2 py-3 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent sm:block"
         >
           Email ↗
         </a>
